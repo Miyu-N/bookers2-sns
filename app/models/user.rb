@@ -9,13 +9,14 @@ class User < ApplicationRecord
 	has_many :book_comments, dependent: :destroy
 	has_many :favorited_books, through: :favorites, source: :book
 	has_many :view_counts, dependent: :destroy
-	has_many :user_rooms, dependent: :destroy
-  has_many :chats, dependent: :destroy
-	
 	attachment :profile_image, destroy: false
 
 	validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: { maximum: 50 }
+  
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
 
 
 	# 自分がフォローされる（被フォロー）側の関係性
