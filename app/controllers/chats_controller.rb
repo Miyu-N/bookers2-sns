@@ -33,4 +33,3 @@ class ChatsController < ApplicationController
     end
   end
 end
-end
